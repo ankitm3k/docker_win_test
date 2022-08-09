@@ -2,9 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: 
   pull_request:
-    branches: 
 
 jobs:
   build:
@@ -16,7 +14,7 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/docker_win_test:1.0.0
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/docker_test:1.0.0
       
     - name: Docker Push
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/docker_win_test:1.0.0
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/docker_test:1.0.0
